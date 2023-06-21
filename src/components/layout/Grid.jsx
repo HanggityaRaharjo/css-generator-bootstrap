@@ -1,7 +1,7 @@
 import React from "react";
 
-const Grid = ({ children }) => {
-  return <div className="">{children}</div>;
+const Grid = ({ children, className, content }) => {
+  return <div className={`row ${className}`}>{children}</div>;
 };
 
 export default Grid;

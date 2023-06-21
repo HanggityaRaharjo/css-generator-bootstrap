@@ -39,7 +39,7 @@ const Sidebar = () => {
       <SidebarNavItem image="form-icon.svg" name="Form" to={"/form"} />
       <SidebarNavItem image="button-icon.svg" name="Button" to={"/button"} />
       <SidebarNavItem image="tabs-icon.svg" name="Tabs" to={"/tabs"} />
-      <SidebarNavItem image="pop-up-icon.svg" name="pop-up" to={"/pop-up"} />
+      <SidebarNavItem image="pop-up-icon.svg" name="Pop Up" to={"/pop-up"} />
       <SidebarNavItem image="toast-icon.svg" name="Toast" to={"/toast"} />
     </SidebarMenu>
   );

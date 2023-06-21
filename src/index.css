@@ -70,6 +70,9 @@ h5,
 h6 {
   margin: 0;
 }
+a p {
+  text-decoration: none;
+}
 
 button {
   background-color: transparent;
@@ -242,4 +245,118 @@ button {
 }
 .mb-30 {
   margin-bottom: 30px;
+}
+
+.monitor {
+  height: 512px;
+  background-image: url("bg-dot.svg");
+  background-size: 1000px 612px;
+  background-repeat: repeat;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #2a2a2a;
+  cursor: pointer;
+  height: 7px;
+  border-radius: 10px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: 0; /* Centers thumb on the track */
+  background-color: var(--primary-color-300);
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+}
+
+.color-range input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #2a2a2a;
+  cursor: pointer;
+  height: 7px;
+  border-radius: 10px;
+  transform: translateY(-14px);
+}
+
+.color-range input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -0; /* Centers thumb on the track */
+  background-color: var(--primary-color-200);
+  height: 10px;
+  width: 10px;
+  border-radius: 100%;
+}
+
+.cubex-label {
+  background-color: #373737;
+  padding: 15px;
+  width: 220px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  border-radius: 10px;
+}
+
+.cubex-input {
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  padding: 0px 15px;
+  background-color: var(--neutral-color-500);
+  color: #d3d3d3;
+  height: 51px;
+  width: 324.98px;
+}
+.cubex-form-group {
+  background-color: #373737;
+  border-radius: 10px;
+  padding-left: 14px;
+  height: 51px;
+}
+.cubex-input-color {
+  outline: none;
+  border: none;
+  padding: 5px;
+  color: #d3d3d3;
+  height: 100px;
+  width: 324.98px;
+}
+
+input[type="color"] {
+  padding: 3px;
+  height: 35px;
+  width: 324.98px;
+  border-radius: 10px;
+  background-color: var(--neutral-color-500);
+  transform: translateY(-6px);
+}
+.table th,
+.table td,
+.table thead th {
+  border: none;
+}
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: rgba(55, 55, 55, 1);
+}
+thead {
+  background-color: var(--neutral-color-500);
+  border: none;
+}
+.template-image {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.template-image img {
+  width: 30px;
+  border-radius: 100%;
+}
+.gap-5 {
+  gap: 5px;
 }

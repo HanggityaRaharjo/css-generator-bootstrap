@@ -7,7 +7,6 @@ const SidebarNavItem = ({ image, name, to }) => {
   let currentUrl = url.replace("/", "");
   let path = to.replace("/", "");
   const [currentPage, setCurrentPage] = useState(currentUrl);
-  console.log(currentPage == path);
   return currentPage == path ? (
     <NavActive image={image} name={name} to={to} />
   ) : (
@@ -17,10 +16,12 @@ const SidebarNavItem = ({ image, name, to }) => {
 
 const NavActive = ({ image, name, to }) => {
   return (
-    <div className="sidebar-nav-item active mb-10 text-light">
-      <img src={image} />
-      <p>{name}</p>
-    </div>
+    <Link to={to}>
+      <div className="sidebar-nav-item active mb-10 text-light">
+        <img src={image} />
+        <p>{name}</p>
+      </div>
+    </Link>
   );
 };
 

@@ -9,6 +9,8 @@ import ButtonPage from "./pages/ButtonPage";
 import TabsPage from "./pages/TabsPage";
 import PopUpPage from "./pages/PopUpPage";
 import ToastPage from "./pages/ToastPage";
+import Color from "./pages/Color";
+import Design from "./pages/Design";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,14 @@ const router = createBrowserRouter([
   {
     path: "/template",
     element: <Template />,
+  },
+  {
+    path: "/color",
+    element: <Color />,
+  },
+  {
+    path: "/design",
+    element: <Design />,
   },
   {
     path: "/card",
