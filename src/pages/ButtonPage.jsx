@@ -9,8 +9,11 @@ import Grid from "../components/layout/Grid";
 import InputRange from "../components/input/InputRange";
 import InputText from "../components/input/InputText";
 import InputColor from "../components/input/InputColor";
+import useButtonStore from "../store/ButtonStore";
 
 const ButtonPage = () => {
+  const stateButton = useButtonStore((state) => state);
+  // console.log(stateButton);
   return (
     <Layout>
       <SubHeader
@@ -32,54 +35,54 @@ const ButtonPage = () => {
                   height="full"
                 >
                   <div className="d-flex gap-5 mb-30">
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" className="btn btn-primary">
                       Primary
                     </button>
-                    <button type="button" class="btn btn-secondary">
+                    <button type="button" className="btn btn-secondary">
                       Secondary
                     </button>
-                    <button type="button" class="btn btn-success">
+                    <button type="button" className="btn btn-success">
                       Success
                     </button>
-                    <button type="button" class="btn btn-danger">
+                    <button type="button" className="btn btn-danger">
                       Danger
                     </button>
-                    <button type="button" class="btn btn-warning">
+                    <button type="button" className="btn btn-warning">
                       Warning
                     </button>
-                    <button type="button" class="btn btn-info">
+                    <button type="button" className="btn btn-info">
                       Info
                     </button>
-                    <button type="button" class="btn btn-light">
+                    <button type="button" className="btn btn-light">
                       Light
                     </button>
-                    <button type="button" class="btn btn-dark">
+                    <button type="button" className="btn btn-dark">
                       Dark
                     </button>
                   </div>
                   <div className="d-flex gap-5">
-                    <button type="button" class="btn btn-outline-primary">
+                    <button type="button" className="btn btn-outline-primary">
                       Primary
                     </button>
-                    <button type="button" class="btn btn-outline-secondary">
+                    <button type="button" className="btn btn-outline-secondary">
                       Secondary
                     </button>
-                    <button type="button" class="btn btn-outline-success">
+                    <button type="button" className="btn btn-outline-success">
                       Success
                     </button>
-                    <button type="button" class="btn btn-outline-danger">
+                    <button type="button" className="btn btn-outline-danger">
                       Danger
                     </button>
-                    <button type="button" class="btn btn-outline-warning">
+                    <button type="button" className="btn btn-outline-warning">
                       Warning
                     </button>
-                    <button type="button" class="btn btn-outline-info">
+                    <button type="button" className="btn btn-outline-info">
                       Info
                     </button>
-                    <button type="button" class="btn btn-outline-light">
+                    <button type="button" className="btn btn-outline-light">
                       Light
                     </button>
-                    <button type="button" class="btn btn-outline-dark">
+                    <button type="button" className="btn btn-outline-dark">
                       Dark
                     </button>
                   </div>

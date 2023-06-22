@@ -202,6 +202,30 @@ button {
   border: none;
 }
 
+.btn-primary:focus {
+  background-color: var(--primary-color-400);
+  border: none;
+  box-shadow: 0 0 0 0.2rem rgba(240, 223, 206, 0.5);
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active {
+  background-color: var(--primary-color-300);
+  border-color: var(--primary-color-100);
+  box-shadow: 0 0 0 0.2rem rgba(240, 223, 206, 0.5);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: var(--primary-color-300);
+  border-color: var(--primary-color-100);
+  box-shadow: 0 0 0 0.2rem rgba(240, 223, 206, 0.5);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus {
+  background-color: var(--primary-color-300);
+  border-color: var(--primary-color-100);
+  box-shadow: 0 0 0 0.2rem rgba(240, 223, 206, 0.5);
+}
+
 .btn-outline-primary {
   color: var(--primary-color-300);
   border-color: var(--primary-color-300);
@@ -250,8 +274,8 @@ button {
 .monitor {
   height: 512px;
   background-image: url("bg-dot.svg");
-  background-size: 1000px 612px;
-  background-repeat: repeat;
+  background-size: cover;
+  background-position: center;
 }
 input[type="range"] {
   -webkit-appearance: none;
@@ -313,6 +337,9 @@ input[type="range"]::-webkit-slider-thumb {
   height: 51px;
   width: 324.98px;
 }
+.cubex-input:focus {
+  background-color: var(--neutral-color-500);
+}
 .cubex-form-group {
   background-color: #373737;
   border-radius: 10px;
@@ -360,3 +387,117 @@ thead {
 .gap-5 {
   gap: 5px;
 }
+.gap-30 {
+  gap: 30px;
+}
+.canvas-html {
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  background-image: url("Dot-Vector.png");
+  background-position: center;
+  background-size: cover;
+  min-height: 1000px;
+  color: black;
+}
+.bg-neutral-800 {
+  background-color: var(--neutral-color-400);
+}
+.cubex-select {
+  background-color: var(--neutral-color-300);
+  color: var(--neutral-color-100);
+}
+
+/* Loading */
+.spinner {
+  width: 44px;
+  height: 44px;
+  -webkit-animation: spinner-y0fdc1 2s infinite ease;
+  animation: spinner-y0fdc1 2s infinite ease;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.spinner > div {
+  background-color: rgba(55, 55, 55, 1);
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  border: 2px solid var(--neutral-color-500);
+}
+
+.spinner div:nth-of-type(1) {
+  -webkit-transform: translateZ(-22px) rotateY(180deg);
+  transform: translateZ(-22px) rotateY(180deg);
+}
+
+.spinner div:nth-of-type(2) {
+  -webkit-transform: rotateY(-270deg) translateX(50%);
+  transform: rotateY(-270deg) translateX(50%);
+  -webkit-transform-origin: top right;
+  -ms-transform-origin: top right;
+  transform-origin: top right;
+}
+
+.spinner div:nth-of-type(3) {
+  -webkit-transform: rotateY(270deg) translateX(-50%);
+  transform: rotateY(270deg) translateX(-50%);
+  -webkit-transform-origin: center left;
+  -ms-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.spinner div:nth-of-type(4) {
+  -webkit-transform: rotateX(90deg) translateY(-50%);
+  transform: rotateX(90deg) translateY(-50%);
+  -webkit-transform-origin: top center;
+  -ms-transform-origin: top center;
+  transform-origin: top center;
+}
+
+.spinner div:nth-of-type(5) {
+  -webkit-transform: rotateX(-90deg) translateY(50%);
+  transform: rotateX(-90deg) translateY(50%);
+  -webkit-transform-origin: bottom center;
+  -ms-transform-origin: bottom center;
+  transform-origin: bottom center;
+}
+
+.spinner div:nth-of-type(6) {
+  -webkit-transform: translateZ(22px);
+  transform: translateZ(22px);
+}
+
+@-webkit-keyframes spinner-y0fdc1 {
+  0% {
+    -webkit-transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+    transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+    transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+    transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+  }
+}
+
+@keyframes spinner-y0fdc1 {
+  0% {
+    -webkit-transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+    transform: rotate(45deg) rotateX(-25deg) rotateY(25deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+    transform: rotate(45deg) rotateX(-385deg) rotateY(25deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+    transform: rotate(45deg) rotateX(-385deg) rotateY(385deg);
+  }
+}
+/* End Loading */

@@ -1,0 +1,7 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Icon">
+<rect id="Rectangle 28" x="18" y="16" width="26" height="26" rx="2" fill="#C09162"/>
+<path id="Subtract" fill-rule="evenodd" clip-rule="evenodd" d="M14 10C12.8954 10 12 10.8954 12 12V34C12 35.1046 12.8954 36 14 36H16V16C16 14.8954 16.8954 14 18 14H38V12C38 10.8954 37.1046 10 36 10H14Z" fill="#C09162"/>
+<path id="Subtract_2" fill-rule="evenodd" clip-rule="evenodd" d="M8 4C6.89543 4 6 4.89543 6 6V28C6 29.1046 6.89543 30 8 30H10V11C10 9.34315 11.3431 8 13 8H32V6C32 4.89543 31.1046 4 30 4H8Z" fill="#C09162"/>
+</g>
+</svg>

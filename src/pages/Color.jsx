@@ -26,15 +26,22 @@ const Color = () => {
                 <Flex
                   content="center"
                   items="center"
-                  direction="row"
+                  direction="column"
                   height="full"
                 >
-                  <p>asd</p>
+                  <BoxColor variant={"primary"} />
+                  <BoxColor variant={"secondary"} />
+                  <BoxColor variant={"success"} />
+                  <BoxColor variant={"warning"} />
+                  <BoxColor variant={"danger"} />
+                  <BoxColor variant={"info"} />
+                  <BoxColor variant={"dark"} />
+                  <BoxColor variant={"light"} />
                 </Flex>
               </Monitor>
             </Card>
           </Col>
-          <Col column={4}>asdasdasd</Col>
+          <Col column={4}></Col>
         </Grid>
         <Card>
           <Grid className="justify-content-between">
@@ -73,3 +80,62 @@ const Color = () => {
 };
 
 export default Color;
+
+const BoxColor = ({ variant }) => {
+  return (
+    <div className="d-flex w-100 justify-content-between mb-4">
+      <div className="d-flex gap-30 align-items-center">
+        <p>Primary Color</p>
+        <div
+          className={`bg-${variant}`}
+          style={{ width: "32px", height: "32px" }}
+        ></div>
+      </div>
+      <div>
+        <p>#FFF7EF</p>
+      </div>
+      <div className="d-flex gap-30">
+        <div
+          className={`bg-${variant}`}
+          style={{ width: "32px", height: "32px" }}
+        ></div>
+        <div
+          className={`bg-${variant}`}
+          style={{ width: "32px", height: "32px" }}
+        ></div>
+        <div
+          className={`bg-${variant}`}
+          style={{ width: "32px", height: "32px" }}
+        ></div>
+        <div
+          className={`bg-${variant}`}
+          style={{ width: "32px", height: "32px" }}
+        ></div>
+        <div
+          className={`bg-${variant}`}
+          style={{ width: "32px", height: "32px" }}
+        ></div>
+        <div
+          className={`bg-${variant}`}
+          style={{ width: "32px", height: "32px" }}
+        ></div>
+        <div
+          className={`bg-${variant}`}
+          style={{ width: "32px", height: "32px" }}
+        ></div>
+        <div
+          className={`bg-${variant}`}
+          style={{ width: "32px", height: "32px" }}
+        ></div>
+        <div
+          className={`bg-${variant}`}
+          style={{ width: "32px", height: "32px" }}
+        ></div>
+        <div
+          className={`bg-${variant}`}
+          style={{ width: "32px", height: "32px" }}
+        ></div>
+      </div>
+    </div>
+  );
+};

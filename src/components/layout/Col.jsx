@@ -1,5 +1,5 @@
-const Col = ({ children, column }) => {
-  return <div className={`col-md-${column}`}>{children}</div>;
+const Col = ({ children, column, className }) => {
+  return <div className={`col-md-${column} ${className}`}>{children}</div>;
 };
 
 export default Col;

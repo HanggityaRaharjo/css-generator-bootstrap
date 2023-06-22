@@ -1,7 +1,7 @@
 const InputRange = () => {
   return (
     <div
-      class="form-group d-flex align-items-center mb-30"
+      className="form-group d-flex align-items-center mb-30"
       style={{ gap: "32px" }}
     >
       <label htmlFor="formControlRange" className="cubex-label">

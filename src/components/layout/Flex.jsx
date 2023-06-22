@@ -1,6 +1,6 @@
 import React from "react";
 
-const Flex = ({ children, content, items, direction, height }) => {
+const Flex = ({ children, content, items, direction, height, className }) => {
   content =
     content == "center"
       ? "justify-content-center"
@@ -29,7 +29,7 @@ const Flex = ({ children, content, items, direction, height }) => {
 
   return (
     <div
-      className={`d-flex ${content} ${items} ${direction} ${height}`}
+      className={`d-flex ${content} ${items} ${direction} ${height} ${className}`}
       style={{ height: `${height}` }}
     >
       {children}

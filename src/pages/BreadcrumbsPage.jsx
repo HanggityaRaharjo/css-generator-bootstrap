@@ -32,14 +32,17 @@ const Breadcrumbs = () => {
                   height="full"
                 >
                   <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item">
+                    <ol className="breadcrumb">
+                      <li className="breadcrumb-item">
                         <a href="#">Home</a>
                       </li>
-                      <li class="breadcrumb-item">
+                      <li className="breadcrumb-item">
                         <a href="#">Library</a>
                       </li>
-                      <li class="breadcrumb-item active" aria-current="page">
+                      <li
+                        className="breadcrumb-item active"
+                        aria-current="page"
+                      >
                         Data
                       </li>
                     </ol>
