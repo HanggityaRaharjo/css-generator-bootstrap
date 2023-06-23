@@ -407,10 +407,19 @@ thead {
   color: var(--neutral-color-100);
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+.cubex-select-label {
+  background-color: #373737;
+}
+.cubex-select {
+  background-color: var(--neutral-color-500);
+}
 /* Loading */
 .spinner {
-  width: 44px;
-  height: 44px;
+  width: 60px;
+  height: 60px;
   -webkit-animation: spinner-y0fdc1 2s infinite ease;
   animation: spinner-y0fdc1 2s infinite ease;
   -webkit-transform-style: preserve-3d;
@@ -418,11 +427,11 @@ thead {
 }
 
 .spinner > div {
-  background-color: rgba(55, 55, 55, 1);
+  background-color: #645c54;
   height: 100%;
   position: absolute;
   width: 100%;
-  border: 2px solid var(--neutral-color-500);
+  border: 2px solid white;
 }
 
 .spinner div:nth-of-type(1) {

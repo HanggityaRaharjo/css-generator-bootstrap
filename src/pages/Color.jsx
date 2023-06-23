@@ -8,7 +8,13 @@ import Flex from "../components/layout/Flex";
 import Grid from "../components/layout/Grid";
 import InputText from "../components/input/InputText";
 import InputColor from "../components/input/InputColor";
+import useColorStore from "../store/ColorStore";
+
 const Color = () => {
+  const stateColor = useColorStore((state) => state);
+
+  console.log(stateColor);
+
   return (
     <Layout>
       <SubHeader

@@ -10,7 +10,7 @@ import TabsPage from "./pages/TabsPage";
 import PopUpPage from "./pages/PopUpPage";
 import ToastPage from "./pages/ToastPage";
 import Color from "./pages/Color";
-import Design from "./pages/Design";
+import Design from "./pages/design/Design";
 
 const router = createBrowserRouter([
   {

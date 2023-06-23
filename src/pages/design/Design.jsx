@@ -1,15 +1,439 @@
-import Layout from "../Layout";
-import Card from "../components/Card";
-import Section from "../components/Section";
-import SubHeader from "../components/SubHeader";
-import Col from "../components/layout/Col";
-import Flex from "../components/layout/Flex";
-import Grid from "../components/layout/Grid";
-import InputRange from "../components/input/InputRange";
-import InputText from "../components/input/InputText";
-import InputColor from "../components/input/InputColor";
+import Layout from "../../Layout";
+import Card from "../../components/Card";
+import Section from "../../components/Section";
+import SubHeader from "../../components/SubHeader";
+import Col from "../../components/layout/Col";
+import Flex from "../../components/layout/Flex";
+import Grid from "../../components/layout/Grid";
+import InputRange from "../../components/input/InputRange";
+import InputText from "../../components/input/InputText";
+import InputColor from "../../components/input/InputColor";
+import { useState } from "react";
+import InputFile from "../../components/input/InputFile";
+import useStyleStore from "../../store/CssStore";
+import InputSelect from "../../components/input/InputSelect";
 
 const Design = () => {
+  const stateLayout = useStyleStore((state) => state);
+  const [currentTab, setCurrentTab] = useState("header");
+  const layoutData = {
+    header: {
+      dimension: [
+        {
+          name: "Height",
+          property: "headerHeight",
+          defaultValue: "40px",
+          type: "text",
+          placeholder: "0px",
+        },
+      ],
+      border: [
+        {
+          name: "Border Width",
+          property: "headerBorderWidth",
+          defaultValue: "",
+          type: "text",
+          placeholder: "0px",
+        },
+        {
+          name: "Border Color",
+          property: "headerBorderColor",
+          defaultValue: "",
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Shadow",
+          property: "headerShadow",
+          defaultValue: "0px 20px 50px grey",
+          type: "text",
+          placeholder: "0px 20px 50px grey",
+        },
+      ],
+      font: [
+        {
+          name: "Color",
+          property: "headerColor",
+          defaultValue: "",
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Font Family",
+          property: "headerFontFamily",
+          defaultValue: "Arial,mono-thin,reguler",
+          type: "text",
+          placeholder: "Arial,mono-thin,reguler",
+        },
+        {
+          name: "Font Size",
+          property: "headerFontSize",
+          defaultValue: "0px",
+          type: "text",
+          placeholder: "0px",
+        },
+      ],
+      background: [
+        {
+          name: "Background Color",
+          property: "headerBackgroundColor",
+          defaultValue: stateLayout.headerBackgroundColor,
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Background Gradient",
+          property: "headerBackgroundGradient",
+          defaultValue: "",
+          type: "text",
+          placeholder: "linear-gradient(red, yellow)",
+        },
+        {
+          name: "Filter Blur",
+          property: "headerFilterBlur",
+          defaultValue: "0px",
+          type: "text",
+          placeholder: "0px",
+        },
+      ],
+      upload: [
+        {
+          name: "Background Image",
+          property: "headerBackgroundImage",
+          defaultValue: "",
+          type: "file",
+          placeholder: "",
+        },
+      ],
+    },
+    sidebar: {
+      dimension: [
+        {
+          name: "Width",
+          property: "sidebarWidth",
+          defaultValue: "225",
+          type: "number",
+          placeholder: "225",
+        },
+      ],
+      border: [
+        {
+          name: "Border Width",
+          property: "sidebarBorderWidth",
+          defaultValue: "0px",
+          type: "text",
+          placeholder: "0px",
+        },
+        {
+          name: "Border Color",
+          property: "sidebarBorderColor",
+          defaultValue: "",
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Shadow",
+          property: "sidebarShadow",
+          defaultValue: "0px 20px 50px grey",
+          type: "text",
+          placeholder: "0px 20px 50px grey",
+        },
+      ],
+      font: [
+        {
+          name: "Color",
+          property: "sidebarColor",
+          defaultValue: "#ffffff",
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Font Family",
+          property: "sidebarFontFamily",
+          defaultValue: "Arial,mono-thin,reguler",
+          type: "text",
+          placeholder: "Arial,mono-thin,reguler",
+        },
+        {
+          name: "Font Size",
+          property: "sidebarFontSize",
+          defaultValue: "0px",
+          type: "text",
+          placeholder: "0px",
+        },
+      ],
+      background: [
+        {
+          name: "Background Color",
+          property: "sidebarBackgroundColor",
+          defaultValue: stateLayout.sidebarBackgroundColor,
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Background Gradient",
+          property: "sidebarBackgroundGradient",
+          defaultValue: "linear-gradient(red, yellow)",
+          type: "text",
+          placeholder: "linear-gradient(red, yellow)",
+        },
+        {
+          name: "Filter Blur",
+          property: "sidebarFilterBlur",
+          defaultValue: "0px",
+          type: "text",
+          placeholder: "0px",
+        },
+      ],
+      navigation: [
+        {
+          name: "Link Background",
+          property: "sidebarNavLinkBackgroundColor",
+          defaultValue: "#d3d3d3",
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Link Color",
+          property: "sidebarNavLinkColor",
+          defaultValue: "#d3d3d3",
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Heading Color",
+          property: "sidebarNavHeadingColor",
+          defaultValue: "#d3d3d3",
+          type: "color",
+          placeholder: "none",
+        },
+      ],
+      navigationActive: [
+        {
+          name: "Link Active Background",
+          property: "sidebarNavLinkActiveBackgroundColor",
+          defaultValue: "#d3d3d3",
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Link Active Color",
+          property: "sidebarNavLinkActiveColor",
+          defaultValue: "#d3d3d3",
+          type: "color",
+          placeholder: "none",
+        },
+      ],
+      upload: [
+        {
+          name: "Background Image",
+          property: "sidebarBackgroundImage",
+          defaultValue: "Test",
+          type: "text",
+          placeholder: "URL/Link",
+        },
+      ],
+    },
+    content: {
+      dimension: [
+        {
+          name: "Height",
+          property: "contentHeight",
+          defaultValue: "0rem",
+          type: "text",
+          placeholder: "0rem",
+        },
+      ],
+      border: [
+        {
+          name: "Border Width",
+          property: "contentBorderWidth",
+          defaultValue: "0px",
+          type: "text",
+          placeholder: "0px",
+        },
+        {
+          name: "Border Color",
+          property: "contentBorderColor",
+          defaultValue: "",
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Shadow",
+          property: "contentShadow",
+          defaultValue: "0px 20px 50px grey",
+          type: "text",
+          placeholder: "0px 20px 50px grey",
+        },
+      ],
+      font: [
+        {
+          name: "Color",
+          property: "contentColor",
+          defaultValue: "0px",
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Font Family",
+          property: "contentFontFamily",
+          defaultValue: "Arial, Helvetica, sans-serif",
+          type: "text",
+          placeholder: "Arial, Helvetica, sans-serif",
+        },
+        {
+          name: "Font Size",
+          property: "contentFontSize",
+          defaultValue: "0px",
+          type: "text",
+          placeholder: "0px",
+        },
+      ],
+      background: [
+        {
+          name: "Background Color",
+          property: "contentBackgroundColor",
+          defaultValue: stateLayout.contentBackgroundColor,
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Background Gradient",
+          property: "contentBackgroundGradient",
+          defaultValue: "linear-gradient(red, yellow)",
+          type: "text",
+          placeholder: "linear-gradient(red, yellow)",
+        },
+        {
+          name: "Filter Blur",
+          property: "contentFilterBlur",
+          defaultValue: "0px",
+          type: "text",
+          placeholder: "0px",
+        },
+      ],
+      upload: [
+        {
+          name: "Background Image",
+          property: "contentBackgroundImage",
+          defaultValue: "Test",
+          type: "text",
+          placeholder: "URL/Link",
+        },
+      ],
+    },
+
+    footer: {
+      dimension: [
+        {
+          name: "Height",
+          property: "footerHeight",
+          defaultValue: "0rem",
+          type: "text",
+          placeholder: "0rem",
+        },
+      ],
+      border: [
+        {
+          name: "Border Width",
+          property: "footerBorderWidth",
+          defaultValue: "1px",
+          type: "text",
+          placeholder: "0px",
+        },
+        {
+          name: "Border Color",
+          property: "footerBorderColor",
+          defaultValue: "",
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Shadow",
+          property: "footerShadow",
+          defaultValue: "0px 20px 50px grey",
+          type: "text",
+          placeholder: "0px 20px 50px grey",
+        },
+      ],
+      font: [
+        {
+          name: "Color",
+          property: "footerColor",
+          defaultValue: "0px",
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Font Family",
+          property: "footerFontFamily",
+          defaultValue: "Arial,mono-thin,reguler",
+          type: "text",
+          placeholder: "Arial,mono-thin,reguler",
+        },
+        {
+          name: "Font Size",
+          property: "footerFontSize",
+          defaultValue: "0px",
+          type: "text",
+          placeholder: "0px",
+        },
+      ],
+      background: [
+        {
+          name: "Background Color",
+          property: "footerBackgroundColor",
+          defaultValue: stateLayout.footerBackgroundColor,
+          type: "color",
+          placeholder: "none",
+        },
+        {
+          name: "Background Gradient",
+          property: "footerBackgroundGradient",
+          defaultValue: "linear-gradient(red, yellow)",
+          type: "text",
+          placeholder: "linear-gradient(red, yellow)",
+        },
+        {
+          name: "Filter Blur",
+          property: "footerFilterBlur",
+          defaultValue: "0px",
+          type: "text",
+          placeholder: "0px",
+        },
+      ],
+      upload: [
+        {
+          name: "Background Image",
+          property: "footerBackgroundImage",
+          defaultValue: "Test",
+          type: "text",
+          placeholder: "URL/Link",
+        },
+      ],
+    },
+  };
+  const selectData = {
+    header: {
+      name: "Border Style",
+      property: "headerBorderStyle",
+      value: [
+        { childName: "Solid", value: "solid" },
+        { childName: "Dotted", value: "dotted" },
+        { childName: "Dashed", value: "dashed" },
+        { childName: "Double", value: "double" },
+        { childName: "Groove", value: "groove" },
+        { childName: "Ridge", value: "ridge" },
+      ],
+    },
+  };
+  const rangeData = {
+    header: {
+      name: "Border Radius",
+      property: "headerBorderRadius",
+    },
+  };
   return (
     <Layout>
       <SubHeader
@@ -568,52 +992,510 @@ const Design = () => {
                   transform: "translateX(-50%)",
                   width: "463.9px",
                   height: "260.5px",
+                  overflowY: "scroll",
                 }}
-              ></div>
+              >
+                {/* Header */}
+                {/*  */}
+                <div
+                  className="d-flex justify-content-center align-items-center cursor-pointer"
+                  style={{
+                    background: `${
+                      stateLayout.headerBackgroundGradient == null ||
+                      stateLayout.headerBackgroundGradient == ""
+                        ? stateLayout.headerBackgroundColor
+                        : stateLayout.headerBackgroundGradient
+                    }`,
+                    border: `${stateLayout.headerBorderWidth} ${stateLayout.headerBorderStyle} ${stateLayout.headerBorderColor}`,
+                    borderRadius: stateLayout.headerBorderRadius,
+                    boxShadow: stateLayout.headerShadow,
+                    color: stateLayout.headerColor,
+                    height: stateLayout.headerHeight,
+                    filter: `blur(${stateLayout.headerFilterBlur})`,
+                    fontSize: stateLayout.headerFontSize,
+                    fontFamily: stateLayout.headerFontFamily,
+                  }}
+                  onClick={() => setCurrentTab("header")}
+                >
+                  <p>Header</p>
+                </div>
+                {/* End Header */}
+                {/* Content And Sidebar */}
+                <div className="d-flex">
+                  <div
+                    className=""
+                    style={{
+                      width: "20%",
+                      height: "300px",
+                    }}
+                    onClick={() => setCurrentTab("sidebar")}
+                  >
+                    Kiri
+                  </div>
+                  <div
+                    className=""
+                    style={{ width: "80%", height: "300px" }}
+                    onClick={() => setCurrentTab("content")}
+                  >
+                    Kanan
+                  </div>
+                </div>
+                {/* End Content And Sidebar */}
+                {/* Footer */}
+                <div
+                  className="d-flex justify-content-center align-items-center"
+                  style={{ height: "30px" }}
+                >
+                  Footer
+                </div>
+                {/* End Footer */}
+              </div>
             </div>
             {/* Imac */}
           </Col>
           <Col column={4}>
             <Card>
-              <InputRange />
-              <InputRange />
+              <InputRange
+                name={rangeData.header.name}
+                property={rangeData.header.property}
+              />
+              <InputSelect
+                value={selectData.header.value}
+                name={selectData.header.name}
+                property={selectData.header.property}
+              />
             </Card>
           </Col>
         </Grid>
-        <Card>
-          <Grid className="justify-content-between">
-            <Col column={4} className="mb-5">
-              <InputText />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-          </Grid>
-        </Card>
+        {currentTab == "header" ? <Header layoutData={layoutData} /> : null}
+        {currentTab == "sidebar" ? <Sidebar layoutData={layoutData} /> : null}
+        {currentTab == "sidebar" ? <Content layoutData={layoutData} /> : null}
       </Section>
     </Layout>
   );
 };
 
 export default Design;
+
+const Header = ({ layoutData }) => {
+  return (
+    <Card>
+      <h3 className="text-center">Header</h3>
+      {/* Dimension */}
+      <h4>Dimension</h4>
+      <Grid className="justify-content-between">
+        {layoutData.header.dimension.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputColor
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+      {/* Border */}
+      <h4>Border</h4>
+      <Grid className="justify-content-between">
+        {layoutData.header.border.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputColor
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+      {/* Font */}
+      <h4>Font</h4>
+      <Grid className="justify-content-between">
+        {layoutData.header.font.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputColor
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+      {/* Background */}
+      <h4>Background</h4>
+      <Grid className="justify-content-between">
+        {layoutData.header.background.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputColor
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+      {/* Background */}
+      <h4>Upload</h4>
+      <Grid className="justify-content-between">
+        {layoutData.header.upload.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : data.type == "color" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputFile
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+    </Card>
+  );
+};
+
+const Sidebar = ({ layoutData }) => {
+  return (
+    <Card>
+      <h3 className="text-center">Sidebar</h3>
+      {/* Dimension */}
+      <h4>Dimension</h4>
+      <Grid className="justify-content-between">
+        {layoutData.sidebar.dimension.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputColor
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+      {/* Border */}
+      <h4>Border</h4>
+      <Grid className="justify-content-between">
+        {layoutData.sidebar.border.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputColor
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+      {/* Font */}
+      <h4>Font</h4>
+      <Grid className="justify-content-between">
+        {layoutData.sidebar.font.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputColor
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+      {/* Background */}
+      <h4>Background</h4>
+      <Grid className="justify-content-between">
+        {layoutData.sidebar.background.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputColor
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+      {/* Background */}
+      <h4>Upload</h4>
+      <Grid className="justify-content-between">
+        {layoutData.sidebar.upload.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : data.type == "color" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputFile
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+    </Card>
+  );
+};
+
+const Content = ({ layoutData }) => {
+  return (
+    <Card>
+      <h3 className="text-center">Content</h3>
+      {/* Dimension */}
+      <h4>Dimension</h4>
+      <Grid className="justify-content-between">
+        {layoutData.content.dimension.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputColor
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+      {/* Border */}
+      <h4>Border</h4>
+      <Grid className="justify-content-between">
+        {layoutData.content.border.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputColor
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+      {/* Font */}
+      <h4>Font</h4>
+      <Grid className="justify-content-between">
+        {layoutData.content.font.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputColor
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+      {/* Background */}
+      <h4>Background</h4>
+      <Grid className="justify-content-between">
+        {layoutData.content.background.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputColor
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+      {/* Background */}
+      <h4>Upload</h4>
+      <Grid className="justify-content-between">
+        {layoutData.content.upload.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : data.type == "color" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputFile
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+    </Card>
+  );
+};
