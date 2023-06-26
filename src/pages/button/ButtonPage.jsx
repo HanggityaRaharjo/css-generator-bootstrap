@@ -1,19 +1,50 @@
-import Layout from "../Layout";
-import Card from "../components/Card";
-import Monitor from "../components/Monitor";
-import Section from "../components/Section";
-import SubHeader from "../components/SubHeader";
-import Col from "../components/layout/Col";
-import Flex from "../components/layout/Flex";
-import Grid from "../components/layout/Grid";
-import InputRange from "../components/input/InputRange";
-import InputText from "../components/input/InputText";
-import InputColor from "../components/input/InputColor";
-import useButtonStore from "../store/ButtonStore";
+import Layout from "../../Layout";
+import Card from "../../components/Card";
+import Monitor from "../../components/Monitor";
+import Section from "../../components/Section";
+import SubHeader from "../../components/SubHeader";
+import Col from "../../components/layout/Col";
+import Flex from "../../components/layout/Flex";
+import Grid from "../../components/layout/Grid";
+import InputRange from "../../components/input/InputRange";
+import InputText from "../../components/input/InputText";
+import InputColor from "../../components/input/InputColor";
+import { useState } from "react";
 
 const ButtonPage = () => {
-  const stateButton = useButtonStore((state) => state);
-  // console.log(stateButton);
+  const [currentTab, setCurrentTab] = useState("btn");
+  const buttonData = {
+    btn: [
+      {
+        name: "Font Weight",
+        property: "btnFontWeight",
+        defaultValue: "500",
+        type: "text",
+        placeholder: "0",
+      },
+      {
+        name: "Padding",
+        property: "btnPadding",
+        defaultValue: "0.375rem 0.375rem",
+        type: "text",
+        placeholder: "2px",
+      },
+      {
+        name: "Line Height",
+        property: "btnLineHeight",
+        defaultValue: "0px",
+        type: "text",
+        placeholder: "0px",
+      },
+      {
+        name: "Border Radius",
+        property: "btnBorderRadius",
+        defaultValue: "0px",
+        type: "text",
+        placeholder: "0px",
+      },
+    ],
+  };
   return (
     <Layout>
       <SubHeader
@@ -97,39 +128,43 @@ const ButtonPage = () => {
             </Card>
           </Col>
         </Grid>
-        <Card>
-          <Grid className="justify-content-between">
-            <Col column={4} className="mb-5">
-              <InputText />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-            <Col column={4} className="mb-5">
-              <InputColor />
-            </Col>
-          </Grid>
-        </Card>
+
+        <ButtonComponent buttonData={buttonData} />
       </Section>
     </Layout>
+  );
+};
+
+const ButtonComponent = ({ buttonData }) => {
+  return (
+    <Card>
+      <h3 className="text-center">Button</h3>
+      {/* Dimension */}
+      <h4>Dimension</h4>
+      <Grid className="justify-content-between">
+        {buttonData.btn.map((data, index) => (
+          <Col key={index} column={4} className="mb-1">
+            {data.type == "text" || data.type == "number" ? (
+              <InputText
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            ) : (
+              <InputColor
+                name={data.name}
+                property={data.property}
+                defaultValue={data.defaultValue}
+                type={data.type}
+                placeholder={data.placeholder}
+              />
+            )}
+          </Col>
+        ))}
+      </Grid>
+    </Card>
   );
 };
 

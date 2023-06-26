@@ -3,7 +3,7 @@ import Sidebar from "./components/sidebar/Sidebar";
 
 const Layout = ({ children }) => {
   return (
-    <div id="app">
+    <div id="app" className="page-content-wrapper">
       <Navbar />
       <Sidebar />
       <div id="main-content-wrapper">

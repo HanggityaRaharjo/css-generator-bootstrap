@@ -6,15 +6,15 @@ import InputFile from "../../components/input/InputFile";
 import InputRange from "../../components/input/InputRange";
 import InputSelect from "../../components/input/InputSelect";
 import InputText from "../../components/input/InputText";
-const Header = ({ layoutData, currentActive }) => {
-  console.log(currentActive);
+const CardHeader = ({ layoutData, currentActive }) => {
+  console.log(layoutData);
   return (
     <Card>
-      <h3 className="text-center">Header</h3>
+      <h3 className="text-center">Card Header</h3>
       {/* Dimension */}
       <h4>Dimension</h4>
       <Grid className="justify-content-between">
-        {layoutData.header.dimension.map((data, index) => (
+        {layoutData.cardHeader.dimension.map((data, index) => (
           <Col key={index} column={4} className="mb-1">
             {data.type == "text" || data.type == "number" ? (
               <InputText
@@ -39,7 +39,7 @@ const Header = ({ layoutData, currentActive }) => {
       {/* Border */}
       <h4>Border</h4>
       <Grid className="justify-content-between">
-        {layoutData.header.border.map((data, index) => (
+        {layoutData.cardHeader.border.map((data, index) => (
           <Col key={index} column={4} className="mb-1">
             {data.type == "text" || data.type == "number" ? (
               <InputText
@@ -64,7 +64,7 @@ const Header = ({ layoutData, currentActive }) => {
       {/* Font */}
       <h4>Font</h4>
       <Grid className="justify-content-between">
-        {layoutData.header.font.map((data, index) => (
+        {layoutData.cardHeader.font.map((data, index) => (
           <Col key={index} column={4} className="mb-1">
             {data.type == "text" || data.type == "number" ? (
               <InputText
@@ -89,7 +89,7 @@ const Header = ({ layoutData, currentActive }) => {
       {/* Background */}
       <h4>Background</h4>
       <Grid className="justify-content-between">
-        {layoutData.header.background.map((data, index) => (
+        {layoutData.cardHeader.background.map((data, index) => (
           <Col key={index} column={4} className="mb-1">
             {data.type == "text" || data.type == "number" ? (
               <InputText
@@ -114,7 +114,7 @@ const Header = ({ layoutData, currentActive }) => {
       {/* Background */}
       <h4>Upload</h4>
       <Grid className="justify-content-between">
-        {layoutData.header.upload.map((data, index) => (
+        {layoutData.cardHeader.upload.map((data, index) => (
           <Col key={index} column={4} className="mb-1">
             {data.type == "text" || data.type == "number" ? (
               <InputText
@@ -148,4 +148,4 @@ const Header = ({ layoutData, currentActive }) => {
   );
 };
 
-export default Header;
+export default CardHeader;

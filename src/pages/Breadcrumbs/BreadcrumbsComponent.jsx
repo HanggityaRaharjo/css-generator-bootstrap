@@ -6,15 +6,14 @@ import InputFile from "../../components/input/InputFile";
 import InputRange from "../../components/input/InputRange";
 import InputSelect from "../../components/input/InputSelect";
 import InputText from "../../components/input/InputText";
-const Header = ({ layoutData, currentActive }) => {
-  console.log(currentActive);
+const BreadcrumbsComponent = ({ breadcumbsData }) => {
   return (
     <Card>
-      <h3 className="text-center">Header</h3>
+      <h3 className="text-center">Breadcrumbs</h3>
       {/* Dimension */}
       <h4>Dimension</h4>
-      <Grid className="justify-content-between">
-        {layoutData.header.dimension.map((data, index) => (
+      <Grid className="">
+        {breadcumbsData.breadcrumbs.dimension.map((data, index) => (
           <Col key={index} column={4} className="mb-1">
             {data.type == "text" || data.type == "number" ? (
               <InputText
@@ -38,8 +37,8 @@ const Header = ({ layoutData, currentActive }) => {
       </Grid>
       {/* Border */}
       <h4>Border</h4>
-      <Grid className="justify-content-between">
-        {layoutData.header.border.map((data, index) => (
+      <Grid className="">
+        {breadcumbsData.breadcrumbs.border.map((data, index) => (
           <Col key={index} column={4} className="mb-1">
             {data.type == "text" || data.type == "number" ? (
               <InputText
@@ -63,8 +62,8 @@ const Header = ({ layoutData, currentActive }) => {
       </Grid>
       {/* Font */}
       <h4>Font</h4>
-      <Grid className="justify-content-between">
-        {layoutData.header.font.map((data, index) => (
+      <Grid className="">
+        {breadcumbsData.breadcrumbs.font.map((data, index) => (
           <Col key={index} column={4} className="mb-1">
             {data.type == "text" || data.type == "number" ? (
               <InputText
@@ -88,8 +87,8 @@ const Header = ({ layoutData, currentActive }) => {
       </Grid>
       {/* Background */}
       <h4>Background</h4>
-      <Grid className="justify-content-between">
-        {layoutData.header.background.map((data, index) => (
+      <Grid className="">
+        {breadcumbsData.breadcrumbs.background.map((data, index) => (
           <Col key={index} column={4} className="mb-1">
             {data.type == "text" || data.type == "number" ? (
               <InputText
@@ -112,40 +111,8 @@ const Header = ({ layoutData, currentActive }) => {
         ))}
       </Grid>
       {/* Background */}
-      <h4>Upload</h4>
-      <Grid className="justify-content-between">
-        {layoutData.header.upload.map((data, index) => (
-          <Col key={index} column={4} className="mb-1">
-            {data.type == "text" || data.type == "number" ? (
-              <InputText
-                name={data.name}
-                property={data.property}
-                defaultValue={data.defaultValue}
-                type={data.type}
-                placeholder={data.placeholder}
-              />
-            ) : data.type == "color" ? (
-              <InputText
-                name={data.name}
-                property={data.property}
-                defaultValue={data.defaultValue}
-                type={data.type}
-                placeholder={data.placeholder}
-              />
-            ) : (
-              <InputFile
-                name={data.name}
-                property={data.property}
-                defaultValue={data.defaultValue}
-                type={data.type}
-                placeholder={data.placeholder}
-              />
-            )}
-          </Col>
-        ))}
-      </Grid>
     </Card>
   );
 };
 
-export default Header;
+export default BreadcrumbsComponent;
