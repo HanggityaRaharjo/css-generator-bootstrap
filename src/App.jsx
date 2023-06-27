@@ -8,7 +8,7 @@ import FormPage from "./pages/form/FormPage";
 import ButtonPage from "./pages/button/ButtonPage";
 import TabsPage from "./pages/tabs/TabsPage";
 import PopUpPage from "./pages/pop-up/PopUpPage";
-import ToastPage from "./pages/ToastPage";
+import ToastPage from "./pages/toast/ToastPage";
 import Color from "./pages/Color";
 import Design from "./pages/design/Design";
 

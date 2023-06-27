@@ -9,6 +9,7 @@ import Grid from "../../components/layout/Grid";
 import InputRange from "../../components/input/InputRange";
 import InputText from "../../components/input/InputText";
 import InputColor from "../../components/input/InputColor";
+import PopUpComponent from "./PopUpComponent";
 
 const PopUpPage = () => {
   const popUpData = {
@@ -177,6 +178,7 @@ const PopUpPage = () => {
             </Card>
           </Col>
         </Grid>
+        <PopUpComponent popUpData={popUpData} />
       </Section>
     </Layout>
   );

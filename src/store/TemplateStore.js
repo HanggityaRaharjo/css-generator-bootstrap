@@ -1,19 +1,24 @@
 import { create } from "zustand";
 
 const useTemplateStore = create((set) => ({
+  stateTemplateId: "",
   stateTemplate: "",
-  smartadmin: {
-    link: "http://localhost:8000/smartadmin/css/themes/triklin.css",
-  },
-  sbadmin: {
-    link: "http://localhost:8000/bootstrap-test/css/styles.css",
-  },
+  stateCompanyName: "",
+  stateTemplateCode: "",
+
   // End Selected
-  changeStyle: (state) => {
+  editTemplate: (state) => {
     console.log(state);
     const property = state.property;
     set({ [property]: state.value });
   },
+  resetTemplate: () =>
+    set({
+      stateTemplateId: "",
+      stateTemplate: "",
+      stateCompanyName: "",
+      stateTemplateCode: "",
+    }),
 }));
 
 export default useTemplateStore;

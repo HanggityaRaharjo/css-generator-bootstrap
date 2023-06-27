@@ -2,7 +2,11 @@ const FilterSelect = () => {
   return (
     <div className="input-group" style={{ width: "250px" }}>
       <div className="input-group-prepend">
-        <label className="input-group-text " htmlFor="inputGroupSelect01">
+        <label
+          className="input-group-text text-light"
+          htmlFor="inputGroupSelect01"
+          style={{ background: "#373737", border: "none" }}
+        >
           Template
         </label>
       </div>
@@ -10,6 +14,7 @@ const FilterSelect = () => {
         defaultValue={"DEFAULT"}
         className="custom-select cubex-select"
         id="inputGroupSelect01"
+        style={{ border: "none" }}
       >
         <option value={"DEFAULT"} disabled>
           Choose...

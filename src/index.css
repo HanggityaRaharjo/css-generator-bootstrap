@@ -78,6 +78,10 @@ button {
   background-color: transparent;
   border: none;
 }
+body {
+  background: linear-gradient(180deg, #131313 0%, #474646 100%);
+  background-attachment: fixed;
+}
 
 #cubex-navbar {
   background: linear-gradient(90deg, #140d05 0%, #363533 100%);
@@ -419,6 +423,17 @@ thead {
 
 .border-active {
   border: 1px solid red;
+}
+
+.pagination .page-item .page-link {
+  background-color: var(--neutral-color-500);
+  border: none;
+  color: var(--secondary-color-100);
+}
+.pagination .page-item.active .page-link {
+  background-color: var(--primary-color-300);
+  border: none;
+  color: white;
 }
 
 /* Loading */

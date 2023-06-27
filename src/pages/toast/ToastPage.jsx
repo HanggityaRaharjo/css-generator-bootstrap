@@ -9,22 +9,19 @@ import Grid from "../../components/layout/Grid";
 import InputRange from "../../components/input/InputRange";
 import InputText from "../../components/input/InputText";
 import InputColor from "../../components/input/InputColor";
-import useStyleStore from "../../store/CssStore";
-import CardComponent from "./CardComponent";
-import { useEffect, useState } from "react";
-import CardHeader from "./CardHeader";
-import CardContent from "./CardContent";
-import CardFooter from "./CardFooter";
+import ToastComponent from "./ToastComponent";
+import ToastHeader from "./ToastHeader";
+import ToastContent from "./ToastContent";
+import { useState } from "react";
 
-const CardPage = () => {
-  const stateCard = useStyleStore((state) => state);
-  const [currentTab, setCurrentTab] = useState("card");
-  const cardData = {
-    card: {
+const ToastPage = () => {
+  const [currentTab, setCurrentTab] = useState("toast-header");
+  const toastData = {
+    toast: {
       dimension: [
         {
           name: "Height",
-          property: "cardHeight",
+          property: "toastHeight",
           defaultValue: "0rem",
           type: "text",
           placeholder: "0rem",
@@ -33,51 +30,52 @@ const CardPage = () => {
       border: [
         {
           name: "Border Width",
-          property: "cardBorderWidth",
-          defaultValue: "1px",
+          property: "toastBorderWidth",
+          defaultValue: "0px",
           type: "text",
           placeholder: "0px",
         },
+
         {
           name: "Border Color",
-          property: "cardBorderColor",
+          property: "toastBorderColor",
           defaultValue: "",
           type: "color",
           placeholder: "none",
+        },
+        {
+          name: "Shadow",
+          property: "toastShadow",
+          defaultValue: "0px 20px 50px grey",
+          type: "text",
+          placeholder: "0px 20px 50px grey",
         },
         {
           name: "Border Radius",
-          property: "cardBorderRadius",
-          defaultValue: "0px",
+          property: "toastBorderRadius",
+          defaultValue: "5px",
           type: "text",
-          placeholder: "0px",
-        },
-        {
-          name: "Shadow",
-          property: "cardShadow",
-          defaultValue: "0px 20px 50px grey",
-          type: "text",
-          placeholder: "0px 20px 50px grey",
+          placeholder: "5px",
         },
       ],
       font: [
         {
           name: "Color",
-          property: "cardColor",
+          property: "toastColor",
           defaultValue: "0px",
           type: "color",
           placeholder: "none",
         },
         {
           name: "Font Family",
-          property: "cardFontFamily",
+          property: "toastFontFamily",
           defaultValue: "Arial,mono-thin,reguler",
           type: "text",
           placeholder: "Arial,mono-thin,reguler",
         },
         {
           name: "Font Size",
-          property: "cardFontSize",
+          property: "toastFontSize",
           defaultValue: "0px",
           type: "text",
           placeholder: "0px",
@@ -86,21 +84,21 @@ const CardPage = () => {
       background: [
         {
           name: "Background Color",
-          property: "cardBackgroundColor",
+          property: "toastBackgroundColor",
           defaultValue: "#d3d3d3",
           type: "color",
           placeholder: "none",
         },
         {
           name: "Background Gradient",
-          property: "cardBackgroundGradient",
+          property: "toastBackgroundGradient",
           defaultValue: "linear-gradient(red, yellow)",
           type: "text",
           placeholder: "linear-gradient(red, yellow)",
         },
         {
           name: "Filter Blur",
-          property: "cardFilterBlur",
+          property: "toastFilterBlur",
           defaultValue: "0px",
           type: "text",
           placeholder: "0px",
@@ -109,18 +107,18 @@ const CardPage = () => {
       upload: [
         {
           name: "Background Image",
-          property: "cardBackgroundImage",
+          property: "toastBackgroundImage",
           defaultValue: "Test",
           type: "text",
           placeholder: "URL/Link",
         },
       ],
     },
-    cardHeader: {
+    toastHeader: {
       dimension: [
         {
           name: "Height",
-          property: "cardHeaderHeight",
+          property: "toastHeaderHeight",
           defaultValue: "0rem",
           type: "text",
           placeholder: "0rem",
@@ -129,21 +127,21 @@ const CardPage = () => {
       border: [
         {
           name: "Border Width",
-          property: "cardHeaderBorderWidth",
-          defaultValue: "1px",
+          property: "toastHeaderBorderWidth",
+          defaultValue: "0px",
           type: "text",
           placeholder: "0px",
         },
         {
           name: "Border Color",
-          property: "cardHeaderBorderColor",
+          property: "toastHeaderBorderColor",
           defaultValue: "",
           type: "color",
           placeholder: "none",
         },
         {
           name: "Shadow",
-          property: "cardHeaderShadow",
+          property: "toastHeaderShadow",
           defaultValue: "0px 20px 50px grey",
           type: "text",
           placeholder: "0px 20px 50px grey",
@@ -152,21 +150,21 @@ const CardPage = () => {
       font: [
         {
           name: "Color",
-          property: "cardHeaderColor",
-          defaultValue: "",
+          property: "toastHeaderColor",
+          defaultValue: "0px",
           type: "color",
           placeholder: "none",
         },
         {
           name: "Font Family",
-          property: "cardHeaderFontFamily",
+          property: "toastHeaderFontFamily",
           defaultValue: "Arial,mono-thin,reguler",
           type: "text",
           placeholder: "Arial,mono-thin,reguler",
         },
         {
           name: "Font Size",
-          property: "cardHeaderFontSize",
+          property: "toastHeaderFontSize",
           defaultValue: "0px",
           type: "text",
           placeholder: "0px",
@@ -175,21 +173,21 @@ const CardPage = () => {
       background: [
         {
           name: "Background Color",
-          property: "cardHeaderBackgroundColor",
+          property: "toastHeaderBackgroundColor",
           defaultValue: "#d3d3d3",
           type: "color",
           placeholder: "none",
         },
         {
           name: "Background Gradient",
-          property: "cardHeaderBackgroundGradient",
+          property: "toastHeaderBackgroundGradient",
           defaultValue: "linear-gradient(red, yellow)",
           type: "text",
           placeholder: "linear-gradient(red, yellow)",
         },
         {
           name: "Filter Blur",
-          property: "cardHeaderFilterBlur",
+          property: "toastHeaderFilterBlur",
           defaultValue: "0px",
           type: "text",
           placeholder: "0px",
@@ -198,18 +196,18 @@ const CardPage = () => {
       upload: [
         {
           name: "Background Image",
-          property: "cardHeaderBackgroundImage",
+          property: "toastHeaderBackgroundImage",
           defaultValue: "Test",
           type: "text",
           placeholder: "URL/Link",
         },
       ],
     },
-    cardContent: {
+    toastContent: {
       dimension: [
         {
           name: "Height",
-          property: "cardContentHeight",
+          property: "toastContentHeight",
           defaultValue: "0rem",
           type: "text",
           placeholder: "0rem",
@@ -218,21 +216,21 @@ const CardPage = () => {
       border: [
         {
           name: "Border Width",
-          property: "cardContentBorderWidth",
-          defaultValue: "1px",
-          type: "text",
+          property: "toastContentBorderWidth",
+          defaultValue: "0px",
+          type: "number",
           placeholder: "0px",
         },
         {
           name: "Border Color",
-          property: "cardContentBorderColor",
+          property: "toastContentBorderColor",
           defaultValue: "",
           type: "color",
           placeholder: "none",
         },
         {
           name: "Shadow",
-          property: "cardContentShadow",
+          property: "toastContentShadow",
           defaultValue: "0px 20px 50px grey",
           type: "text",
           placeholder: "0px 20px 50px grey",
@@ -241,21 +239,21 @@ const CardPage = () => {
       font: [
         {
           name: "Color",
-          property: "cardContentColor",
+          property: "toastContentColor",
           defaultValue: "0px",
           type: "color",
           placeholder: "none",
         },
         {
           name: "Font Family",
-          property: "cardContentFontFamily",
+          property: "toastContentFontFamily",
           defaultValue: "Arial,mono-thin,reguler",
           type: "text",
           placeholder: "Arial,mono-thin,reguler",
         },
         {
           name: "Font Size",
-          property: "cardContentFontSize",
+          property: "toastContentFontSize",
           defaultValue: "0px",
           type: "text",
           placeholder: "0px",
@@ -264,102 +262,21 @@ const CardPage = () => {
       background: [
         {
           name: "Background Color",
-          property: "cardContentBackgroundColor",
+          property: "toastContentBackgroundColor",
           defaultValue: "#d3d3d3",
           type: "color",
           placeholder: "none",
         },
         {
           name: "Background Gradient",
-          property: "cardContentBackgroundGradient",
+          property: "toastContentBackgroundGradient",
           defaultValue: "linear-gradient(red, yellow)",
           type: "text",
           placeholder: "linear-gradient(red, yellow)",
         },
         {
           name: "Filter Blur",
-          property: "cardContentFilterBlur",
-          defaultValue: "0px",
-          type: "text",
-          placeholder: "0px",
-        },
-      ],
-      upload: [],
-    },
-    cardFooter: {
-      dimension: [
-        {
-          name: "Height",
-          property: "cardFooterHeight",
-          defaultValue: "0rem",
-          type: "text",
-          placeholder: "0rem",
-        },
-      ],
-      border: [
-        {
-          name: "Border Width",
-          property: "cardFooterBorderWidth",
-          defaultValue: "1px",
-          type: "text",
-          placeholder: "0px",
-        },
-        {
-          name: "Border Color",
-          property: "cardFooterBorderColor",
-          defaultValue: "",
-          type: "color",
-          placeholder: "none",
-        },
-        {
-          name: "Shadow",
-          property: "cardFooterShadow",
-          defaultValue: "0px 20px 50px grey",
-          type: "text",
-          placeholder: "0px 20px 50px grey",
-        },
-      ],
-      font: [
-        {
-          name: "Color",
-          property: "cardFooterColor",
-          defaultValue: "0px",
-          type: "color",
-          placeholder: "none",
-        },
-        {
-          name: "Font Family",
-          property: "cardFooterFontFamily",
-          defaultValue: "Arial,mono-thin,reguler",
-          type: "text",
-          placeholder: "Arial,mono-thin,reguler",
-        },
-        {
-          name: "Font Size",
-          property: "cardFooterFontSize",
-          defaultValue: "0px",
-          type: "text",
-          placeholder: "0px",
-        },
-      ],
-      background: [
-        {
-          name: "Background Color",
-          property: "cardFooterBackgroundColor",
-          defaultValue: "#d3d3d3",
-          type: "color",
-          placeholder: "none",
-        },
-        {
-          name: "Background Gradient",
-          property: "cardFooterBackgroundGradient",
-          defaultValue: "linear-gradient(red, yellow)",
-          type: "text",
-          placeholder: "linear-gradient(red, yellow)",
-        },
-        {
-          name: "Filter Blur",
-          property: "cardFooterFilterBlur",
+          property: "toastContentFilterBlur",
           defaultValue: "0px",
           type: "text",
           placeholder: "0px",
@@ -368,7 +285,7 @@ const CardPage = () => {
       upload: [
         {
           name: "Background Image",
-          property: "cardFooterBackgroundImage",
+          property: "toastContentBackgroundImage",
           defaultValue: "Test",
           type: "text",
           placeholder: "URL/Link",
@@ -382,7 +299,7 @@ const CardPage = () => {
         height="100px"
         rounded="8px"
         image="dashboard-md-icon.svg"
-        title="Card"
+        title="Toast"
         content="Welcome to Cube-x CSS Generator"
       />
       <Section>
@@ -396,56 +313,51 @@ const CardPage = () => {
                   direction="row"
                   height="full"
                 >
-                  <div
-                    className="card text-center"
-                    style={{
-                      border: `${
-                        currentTab == "card" ? "1px solid red" : "none"
-                      }`,
-                    }}
-                  >
+                  <div>
                     <div
-                      className="card-header cursor-pointer"
-                      style={{
-                        border: `${
-                          currentTab == "cardHeader" ? "1px solid red" : "none"
-                        }`,
-                      }}
-                      onClick={() => setCurrentTab("cardHeader")}
-                      onDoubleClick={() => setCurrentTab("card")}
+                      className={`toast fade show ${
+                        currentTab == "toast" ? "border-active" : null
+                      }`}
                     >
-                      Card Header
-                    </div>
-                    <div
-                      className="card-body cursor-pointer"
-                      style={{
-                        border: `${
-                          currentTab == "cardContent" ? "1px solid red" : "none"
-                        }`,
-                      }}
-                      onClick={() => setCurrentTab("cardContent")}
-                      onDoubleClick={() => setCurrentTab("card")}
-                    >
-                      <h5 className="card-title">Card Body</h5>
-                      <p className="card-text">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing
-                        elit. Illo, veniam?
-                      </p>
-                      <a href="#" className="btn btn-primary">
-                        Button
-                      </a>
-                    </div>
-                    <div
-                      className="card-footer cursor-pointer"
-                      style={{
-                        border: `${
-                          currentTab == "cardFooter" ? "1px solid red" : "none"
-                        }`,
-                      }}
-                      onClick={() => setCurrentTab("cardFooter")}
-                      onDoubleClick={() => setCurrentTab("card")}
-                    >
-                      Card Footer
+                      <div
+                        className={`toast-header ${
+                          currentTab == "toast-header" ? "border-active" : null
+                        }`}
+                        onClick={() => setCurrentTab("toast-header")}
+                        onDoubleClick={() => setCurrentTab("toast")}
+                      >
+                        <svg
+                          className="bd-placeholder-img rounded mr-2"
+                          width="20"
+                          height="20"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <title>asd </title>
+                          <rect
+                            width="100%"
+                            height="100%"
+                            fill="#007aff"
+                          ></rect>
+                          <text x="50%" y="50%" fill="#dee2e6" dy=".3em">
+                            {" "}
+                          </text>
+                        </svg>
+
+                        <strong className="mr-auto">Bootstrap</strong>
+                        <small>11 mins ago</small>
+                        <button type="button" className="ml-2 mb-1 close">
+                          <span>×</span>
+                        </button>
+                      </div>
+                      <div
+                        className={`toast-body text-dark ${
+                          currentTab == "toast-content" ? "border-active" : null
+                        }`}
+                        onClick={() => setCurrentTab("toast-content")}
+                        onDoubleClick={() => setCurrentTab("toast")}
+                      >
+                        Hello, world! This is a toast message.
+                      </div>
                     </div>
                   </div>
                 </Flex>
@@ -459,19 +371,18 @@ const CardPage = () => {
             </Card>
           </Col>
         </Grid>
-        {currentTab == "card" ? <CardComponent layoutData={cardData} /> : null}
-        {currentTab == "cardHeader" ? (
-          <CardHeader layoutData={cardData} />
+        {currentTab == "toast" ? (
+          <ToastComponent toastData={toastData} />
         ) : null}
-        {currentTab == "cardContent" ? (
-          <CardContent layoutData={cardData} />
+        {currentTab == "toast-header" ? (
+          <ToastHeader toastData={toastData} />
         ) : null}
-        {currentTab == "cardFooter" ? (
-          <CardFooter layoutData={cardData} />
+        {currentTab == "toast-content" ? (
+          <ToastContent toastData={toastData} />
         ) : null}
       </Section>
     </Layout>
   );
 };
 
-export default CardPage;
+export default ToastPage;

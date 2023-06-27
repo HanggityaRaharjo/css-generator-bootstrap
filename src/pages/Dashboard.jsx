@@ -14,18 +14,22 @@ import CreateModal from "../components/table/CreateModal";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
 import AddCssLinkToHead from "../helper/AddCssLinkToHead ";
+import Pagination from "../components/Pagination";
+import useTemplateStore from "../store/TemplateStore";
 
 const Dashboard = () => {
+  const changeCurrentTemplate = useTemplateStore((state) => state.editTemplate);
+
   const [dataTemplate, setDataTemplate] = useState([]);
   const [allPage, setAllPage] = useState([]);
   const [nextPage, setNextPage] = useState("");
   const [previousPage, setPreviousPage] = useState("");
   const [currentPage, setCurrentPage] = useState("");
+
   const GetAllDataTemplate = () => {
     axios
-      .get("http://localhost:8000/api/get-all-company-template?page=2")
+      .get("http://localhost:8000/api/get-all-company-template")
       .then(function ({ data }) {
-        console.log(data);
         setDataTemplate(data.data);
         setAllPage(data.links);
         setCurrentPage(data.current_page);
@@ -35,6 +39,21 @@ const Dashboard = () => {
       .catch(function (error) {
         console.log(error);
       });
+  };
+
+  const HandleEdit = (id, template, code, company) => {
+    const stateCurrentTemplate = [
+      { property: "stateTemplateId", value: id },
+      { property: "stateTemplate", value: template },
+      { property: "stateCompanyName", value: company },
+      { property: "stateTemplateCode", value: code },
+    ];
+    for (let index = 0; index < stateCurrentTemplate.length; index++) {
+      changeCurrentTemplate({
+        property: stateCurrentTemplate[index].property,
+        value: stateCurrentTemplate[index].value,
+      });
+    }
   };
 
   useEffect(() => {
@@ -52,7 +71,6 @@ const Dashboard = () => {
           title="Dashboard"
           content="Welcome to Cube-x CSS Generator"
         />
-
         <Section>
           <Card>
             <Flex className="mb-30 justify-content-between align-items-center">
@@ -175,6 +193,14 @@ const Dashboard = () => {
                           <button
                             className="btn btn-primary"
                             style={{ width: "100px" }}
+                            onClick={() =>
+                              HandleEdit(
+                                data.id,
+                                data.template,
+                                data.code,
+                                data.company_name
+                              )
+                            }
                           >
                             Edit
                           </button>
@@ -192,11 +218,6 @@ const Dashboard = () => {
                   <TRow>
                     <td colSpan="5">
                       <div className="d-flex justify-content-center">
-                        {/* <Spinner
-                        animation="border"
-                        variant="dark"
-                        style={{ width: "100px", height: "100px" }}
-                      /> */}
                         <div className="spinner">
                           <div></div>
                           <div></div>
@@ -231,47 +252,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-const Pagination = (props) => {
-  console.log("ini current page", props.currentPage);
-  console.log("ini all page", props.page);
-  const HandlePage = (url) => {
-    axios
-      .get(url)
-      .then(function ({ data }) {
-        props.setData(data.data);
-        props.setAll(data.links);
-        props.setCurrent(data.current_page);
-        props.setNext(data.next_page_url);
-        props.setPrevious(data.prev_page_url);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-
-  return (
-    <div>
-      <nav aria-label="Page navigation">
-        <ul className="pagination">
-          {props.page &&
-            props.page.map((link, index) => (
-              <li
-                key={link.label}
-                className={`page-item ${
-                  props.currentPage == index ? "active" : ""
-                }`}
-              >
-                <button
-                  className="page-link "
-                  onClick={() => HandlePage(link.url)}
-                >
-                  {link.label}
-                </button>
-              </li>
-            ))}
-        </ul>
-      </nav>
-    </div>
-  );
-};
